@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+  configuration:
+    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+oss:
+  uploadPath: '/files'
+
+#用于发送邮箱验证码的账户和密码
+email:
+  #发送邮件的服务器域名
+  #126邮箱为smtp.126.com,163邮箱为163.smtp.com，QQ个人邮箱为smtp.qq.com，腾讯企业邮为smtp.exmail.qq.com
+  hostName: smtp.qq.com
+  userName: xxx@qq.com
+  password: xxx
+
+spring:
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  datasource:
+    druid:
+      #MySQL
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/fileManage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: xxx
+      password: xxx
+      #初始化连接数
+      initial-size: 1
+      #最小空闲连接
+      min-idle: 1
+      #最大活动连接
+      max-active: 20
+      #获取连接时测试是否可用
+      test-on-borrow: true
+      #监控页面启动
+      filter:
+        wall:
+          config:
+            start-transaction-allow: true
